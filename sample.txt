@@ -1,0 +1,76 @@
+<li class="subject-item">
+    <div class="pic">
+      <a class="nbg" href="http://book.douban.com/subject/20507377/" onclick=&#34;moreurl(this,{i:&#39;0&#39;})&#34; }>
+        <img class="" src="http://img4.douban.com/mpic/s24594898.jpg"
+          width="90">
+      </a>
+    </div>
+
+    <div class="info">
+      <h2 class="">
+        <a href="http://book.douban.com/subject/20507377/" title="永恆如新的日常設計" onclick=&#34;moreurl(this,{i:&#39;0&#39;})&#34;>
+        永恆如新的日常設計
+        </a>
+      </h2>
+
+      <div class="pub"> 小林和人 / 邱喜麗 / 野人文化股份有限公司 / 2013-1-4 / NT$420 </div>
+      <div class="short-note">
+        <div> <span class="date">2013-09-11 想读</span> </div>
+        
+        <p class="comment">
+        </p>
+
+
+        
+        <div class="opt-l">
+            <a class="j a_collect_btn" rel="nofollow"
+                name="pbtn-20507377" href="javascript:;">
+              修改
+            </a>
+            &nbsp;&nbsp;
+            <a class="d_link" rel="20507377:F" href="javascript:;">
+              删除
+            </a>
+        </div>
+      </div>
+
+      <div class="ft">
+        <div class="cart-info">
+          <span class="add2cartWidget rr">
+          
+            <a href="javascript:;" class="j  a_add2cart add2cart" name="20507377"><span>加入购书单</span></a>
+            <span class="color_gary book-in-cart hidden">已在
+              <a href="http://book.douban.com/cart">购书单</a>
+              <a class="delete-cart-item" rel="20507377" href="http://book.douban.com/cart">删除</a>
+            </span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+</li>
+
+
+function showHoldingPreview(bookrecno) {
+  //这里需要这么做是因为$(".expressServiceTab").tabs('select', 0);这个动作会在tabs初始化后全部打开
+  //一次第一个tab,造成所有第一个tab数据同时请求服务器然后加载,所以这里用个标识,在第二次点击选择tab才
+  //真正请求加载数据然后显示
+  var initTimes = $("#holdingPreviewDiv_" + bookrecno).attr("inittimes");
+  if(initTimes == "0") {
+    $("#holdingPreviewDiv_" + bookrecno).attr("inittimes", "1");
+    return;
+  } else if(initTimes == "1") {
+    var isDone = $.trim($("#holdingPreviewDiv_" + bookrecno).html());
+    if(isDone == "") {
+      $.ajax({
+        type: "GET",
+        url: "/opac3/book/holdingpreview/" + bookrecno,
+        data: {},
+        dataType: "xml",//这里要用xml,如果用html,则在IE下无法解析这个数据
+        success: function(xml){
+          insertHoldingPreview(bookrecno, xml);
+        }
+      });
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+
+    "name": "DouLib",
+    "description": "Find books in Hangzhou library",
+    "version": "1.0",
+
+    "icons": { "16": "icon16.png",
+               "48": "icon48.png",
+               "128": "icon128.png"
+    },
+
+    "permissions": [
+        "http://*.hzlib.net/"
+    ],
+
+    "content_scripts":[
+        {
+            "matches": ["http://book.douban.com/people/*/wish*"],
+            "js":["jquery-1.10.2.js", "doulib.js"]
+        }
+    ]
+}
