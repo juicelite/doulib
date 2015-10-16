@@ -2,8 +2,8 @@
     "manifest_version": 2,
 
     "name": "DouLib",
-    "description": "Find books in Hangzhou library",
-    "version": "1.0",
+    "description": "Find books in Hangzhou and Zhejiang library",
+    "version": "1.1",
 
     "icons": { "16": "icon16.png",
                "48": "icon48.png",
@@ -11,13 +11,16 @@
     },
 
     "permissions": [
-        "http://*.hzlib.net/"
+        "http://*.hzlib.net/", 
+        "http://*.zjlib.cn/"
     ],
 
     "content_scripts":[
         {
-            "matches": ["http://book.douban.com/people/*/wish*"],
-            "js":["jquery-1.10.2.js", "doulib.js"]
+            "matches": ["http://book.douban.com/people/*/wish*", 
+                        "http://book.douban.com/people/*/collect*",
+                        "http://book.douban.com/people/*/do*"],
+            "js":["jquery-1.10.2.js", "sprintf.js", "doulib.js"]
         }
     ]
 }
