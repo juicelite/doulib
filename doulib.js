@@ -165,7 +165,7 @@
         $(hzlibBtn).appendTo(div);
 
         // Create Zhejiang lib button
-        var zjlibBtn = createLibButton("浙图", "#B49A46", "http://opac.zjlib.cn:8088/opac/search?hasholding=1&searchWay=isbn&q=", "http://opac.zjlib.cn:8088/opac/book/holdingpreview/")
+        var zjlibBtn = createLibButton("浙图", "#B49A46", "http://opac.zjlib.cn/opac/search?hasholding=1&searchWay=isbn&q=", "http://opac.zjlib.cn/opac/book/holdingpreview/")
         $(zjlibBtn).appendTo(div);
 
     });
