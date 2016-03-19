@@ -17,9 +17,9 @@
 
     "content_scripts":[
         {
-            "matches": ["http://book.douban.com/people/*/wish*", 
-                        "http://book.douban.com/people/*/collect*",
-                        "http://book.douban.com/people/*/do*"],
+            "matches": ["https://book.douban.com/people/*/wish*", 
+                        "https://book.douban.com/people/*/collect*",
+                        "https://book.douban.com/people/*/do*"],
             "js":["jquery-1.10.2.js", "sprintf.js", "doulib.js"]
         }
     ]

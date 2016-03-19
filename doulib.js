@@ -11,7 +11,7 @@
         // UI
         var div = $("div", this).filter(".opt-l")[0];
         var bookUrl = $("a", this).filter(function () {
-            return $(this).attr("href").match("http://book.douban.com/subject/");
+            return $(this).attr("href").match("https://book.douban.com/subject/");
         }).attr("href");
 
         // Data
