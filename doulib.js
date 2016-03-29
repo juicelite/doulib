@@ -7,11 +7,17 @@
 
     var g_ISBNs = {};
 
+    var BookUrlPrefix = "http://book.douban.com/subject/";
+    var PageUrl = window.location.href.toLowerCase();
+    if(PageUrl.startsWith("https")) {
+        BookUrlPrefix = "https://book.douban.com/subject/";
+    }
+
     $("li").filter(".subject-item").each(function (i) {
         // UI
         var div = $("div", this).filter(".opt-l")[0];
         var bookUrl = $("a", this).filter(function () {
-            return $(this).attr("href").match("https://book.douban.com/subject/");
+            return $(this).attr("href").match(BookUrlPrefix);
         }).attr("href");
 
         // Data
